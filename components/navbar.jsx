@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 // Paleta de tonos grises
 const grayPalette = {
@@ -17,6 +17,8 @@ const bluePalette = {
 };
 
 const Navbar = styled.nav`
+height: 5%;
+width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,27 +57,42 @@ const LogoutButton = styled(Link)`
   font-weight: bold;
   cursor: pointer;
 `;
+const Div=styled.div`
+  height: 80%;
+  width: 100%;
+`;
 
 const NavbarComponent = () => {
   return (
-    <Navbar>
-      <NavLinks>
-        <NavLink>
-          <StyledLink to="/graficos">Graficos</StyledLink>
-        </NavLink>
-        <NavLink>
-          <StyledLink to="/datos">Datos</StyledLink>
-        </NavLink>
-        <NavLink>
-          <StyledLink to="/informe">Informe</StyledLink>
-        </NavLink>
-        <NavLink>
-          <StyledLink to="/mapa">Mapa</StyledLink>
-        </NavLink>
-      </NavLinks>
-      <LogoutButton to="/">Logout</LogoutButton>
-    </Navbar>
+    <Container>
+      <Navbar>
+        <NavLinks>
+          <NavLink>
+            <StyledLink to="/graficos">Graficos</StyledLink>
+          </NavLink>
+          <NavLink>
+            <StyledLink to="/datos">Datos</StyledLink>
+          </NavLink>
+          <NavLink>
+            <StyledLink to="/informe">Informe</StyledLink>
+          </NavLink>
+          <NavLink>
+            <StyledLink to="/mapa">Mapa</StyledLink>
+          </NavLink>
+        </NavLinks>
+        <LogoutButton to="/">Logout</LogoutButton>
+      </Navbar>
+      <Div>
+        <Outlet />
+      </Div>
+    </Container>
   );
 };
 
 export default NavbarComponent;
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+`;

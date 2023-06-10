@@ -8,13 +8,21 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/graficos" element={<Graficos />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/graficos" element={<NavbarComponent />} >
+            <Route path='' element={<Graficos />} />
+          </Route>
+        </Routes>
+
+      </BrowserRouter>
+
+
+    </>
   );
 }
 export default App;
